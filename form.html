@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <form class="form-control form-control-lg" action="/" method="post">
+    <p>
+      <label>Title</label>
+      <label for="title">
+      <input type="radio" name="title" value="mr">
+      Mr
+    </label>
+      <label for="title">
+      <input type="radio" name="title" value="mrs">
+      Mrs
+    </label>
+      <label for="title">
+      <input type="radio" name="title" value="miss">
+      Miss
+    </label>
+    </p>
+    <p>
+      <label for="first name">First name</label>
+      <input type="text" placeholder="first_name" name="first name">
+    </p>
+    <p>
+      <label for="last name">Last name</label>
+      <input type="text" placeholder="last_name" name="last name">
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" placeholder="email" name="email">
+    </p>
+    <p>
+      <label for="phone number">Phone number</label>
+      <input type="tel" placeholder="phone" name="phone number">
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input type="password" placeholder="password" name="password">
+    </p>
+    <p>
+      <label for="confirm">Confirm your password</label>
+      <input type="password" placeholder="password_confirm" name="confirm">
+    </p>
+    <p>
+      <label for="country">Country</label>
+      <select>
+      <option>Canada</option>
+      <option>France</option>
+      <option>Germany</option>
+      <option>Italy</option>
+      <option>Japan</option>
+      <option>Russia</option>
+      <option>United Kingdom</option>
+      <option>United States</option>
+    </select>
+    </p>
+    <p>
+      <button id="myBtn">
+      Sign up
+    </button>
+    </p>
+  </form>
+
+  <img src="http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC" class="gif" />
+
+
+
+  <script>
+    document.getElementbyClassName("form-control form-control-lg").addEventListener("submit", stopSubmit());
+
+    function stopSubmit(event) {
+
+      event.preventDefault();
+    }
+
+
+
+    function() {
+      var xhr = new XMLHttpRequest();
+      var url = "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC";
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var giphyObj = JSON.parse(xhr.responseText);
+          var gifDrop = document.querySelector(".gif");
+          var link = giphyObj.data[1].images.downsized_medium.url;
+          gifDrop.src = link;
+        }
+      };
+      xhr.open("GET", url, true);
+      xhr.send();
+    }
+  </script>
+</body>
+
+</html>
